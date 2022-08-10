@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RaktaSewa.Model;
 
 namespace RaktaSewa.Data.Data
 {
@@ -7,7 +8,9 @@ namespace RaktaSewa.Data.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {
-        }
+        { 
+
+    }
+        public DbSet<Citizen> Citizens { get; set; }
     }
 }
