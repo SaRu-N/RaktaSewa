@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RaktaSewa.Data;
 using RaktaSewa.Data.Data;
+using RaktaSewa.Repository;
+using RaktaSewa.Services;
 
 namespace RaktaSewa
 {
@@ -19,6 +22,16 @@ namespace RaktaSewa
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(20);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            DependeciesConfig(builder.Services);
 
             var app = builder.Build();
 
@@ -48,6 +61,20 @@ namespace RaktaSewa
             app.MapRazorPages();
 
             app.Run();
+            static void DependeciesConfig(IServiceCollection services)
+            {
+                #region Repositories
+
+                services.AddTransient<ICitizenRepository, CitizenRepository>();
+
+                #endregion Repositories
+
+                #region Services
+
+                services.AddTransient<ICitizenService, CitizenService>();
+
+                #endregion Services
+            }
         }
     }
 }

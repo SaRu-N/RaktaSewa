@@ -22,7 +22,8 @@ namespace RaktaSewa.Model
         public string blood_group { get; set; }
         [StringLength(1)]
         public string Gender { get; set; }
-        public DateTime DOB { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DOB { get; set; }
         public string photo { get; set; }
         [Required]
         [StringLength(20)]
@@ -30,5 +31,8 @@ namespace RaktaSewa.Model
         public DateTime Created_at { get; set; }
         public DateTime? Updated_at { get; set; }
         public bool IsDeleted { get; set; } = false;
+
+       
     }
+   
 }

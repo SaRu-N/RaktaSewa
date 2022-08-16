@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RaktaSewa.Data\RaktaSewa.Data.csproj" />
+    <ProjectReference Include="..\RaktaSewa.Models\RaktaSewa.Models.csproj" />
+  </ItemGroup>
+
 </Project>

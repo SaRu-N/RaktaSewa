@@ -12,7 +12,7 @@ using RaktaSewa.Data.Data;
 namespace RaktaSewa.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220810173615_citizen_added")]
+    [Migration("20220814042153_citizen_added")]
     partial class citizen_added
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -247,7 +247,7 @@ namespace RaktaSewa.Data.Migrations
                     b.Property<DateTime>("Created_at")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DOB")
+                    b.Property<DateTime?>("DOB")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Gender")
