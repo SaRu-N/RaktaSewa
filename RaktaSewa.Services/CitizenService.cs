@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RaktaSewa.Model;
+using RaktaSewa.Models;
 using RaktaSewa.Models.ViewModels;
 using RaktaSewa.Repository;
 

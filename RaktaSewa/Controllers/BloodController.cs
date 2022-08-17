@@ -9,59 +9,59 @@ using System.Diagnostics;
 
 namespace RaktaSewa.Controllers
 {
-    public class CitizenController : Controller
+    public class BloodController : Controller
     {
-        private readonly ICitizenService citizenService;
-        private readonly ILogger<CitizenController> _logger;
-        public CitizenController(
-        ILogger<CitizenController> logger,
-        ICitizenService citizenService
+        private readonly IBloodService bloodService;
+        private readonly ILogger<BloodController> _logger;
+        public BloodController(
+        ILogger<BloodController> logger,
+        IBloodService bloodService
         )
         {
             _logger = logger;
-            this.citizenService = citizenService;
+            this.bloodService = bloodService;
         }
 
-        // GET: CitizenController
+        // GET: BloodController
         public IActionResult Index()
         {
-            return View(new List<Citizen>());
+            return View(new List<Blood>());
            
         }
 
-        // GET: CitizenController/Details/5
-        public IActionResult Details(int citizen_id)
+        // GET: BloodController/Details/5
+        public IActionResult Details(int Id)
         {
             return View();
         }
 
-        // GET: CitizenController/Create
+        // GET: BloodController/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CitizenController/Create
+        // POST: BloodController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateCitizen(CitizenCreateViewModel model)
+        public IActionResult CreateBlood(BloodCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var res = citizenService.Create(model);
+                var res = bloodService.Create(model);
                 if (res.Item1)
                     return RedirectToAction("Index");
             }
             return View();
         }
 
-        // GET: CitizenController/Edit/5
-        public IActionResult Edit(int citizen_id)
+        // GET: BloodController/Edit/5
+        public IActionResult Edit(int Id)
         {
             return View();
         }
 
-        // POST: CitizenController/Edit/5
+        // POST: BloodController/Edit/5
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public IActionResult Edit(int id, IFormCollection collection)
@@ -76,18 +76,18 @@ namespace RaktaSewa.Controllers
         //    }
         //}
 
-        // GET: CitizenController/Delete/5
-        //public IActionResult Delete(int citizen_id)
+        // GET: BloodController/Delete/5
+        //public IActionResult Delete(int Id)
         //{
         //    return View();
         //}
 
-        // POST: CitizenController/Delete/5
+        // POST: BloodController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int citizen_id)
+        public IActionResult Delete(int Id)
         {
-            var res = citizenService.Delete(citizen_id);
+            var res = bloodService.Delete(Id);
             if (res.Item1) return RedirectToAction("Index");
 
             return View("Error");

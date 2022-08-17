@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RaktaSewa.Model;
+using RaktaSewa.Models;
 
 namespace RaktaSewa.Data.Data
 {
@@ -12,6 +12,8 @@ namespace RaktaSewa.Data.Data
 
     }
         public DbSet<Citizen> Citizens { get; set; }
+        public DbSet<Blood> Bloods { get; set; }
+
     }
     //public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
     //{

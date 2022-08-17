@@ -5,13 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RaktaSewa.Models
+namespace RaktaSewa.Models.ViewModels
 {
-    public class Blood
+    public class BloodViewModel 
+    {
+        public int Id { get; set; }
+        public string blood_group { get; set; }
+    }
+    public class BloodCreateViewModel
     {
         public int Id { get; set; }
         [StringLength(3)]
         public string blood_group { get; set; }
-        public bool IsDeleted { get; set; } = false;
     }
 }

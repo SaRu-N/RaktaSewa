@@ -9,34 +9,34 @@ using RaktaSewa.Models;
 
 namespace RaktaSewa.Repository
 {
-    public interface ICitizenRepository
+    public interface IBloodRepository
     {
-        (bool, string) Create(Citizen model);
+        (bool, string) Create(Blood model);
 
-        (bool, string) Delete(Citizen model);
+        (bool, string) Delete(Blood model);
 
-        (bool, string) Edit(Citizen model);
+        (bool, string) Edit(Blood model);
 
-        IQueryable<Citizen> GetAll();
+        IQueryable<Blood> GetAll();
 
-        Citizen GetById(int id);
+        Blood GetById(int id);
     }
-    public class CitizenRepository : ICitizenRepository
+    public class BloodRepository : IBloodRepository
     {
         private readonly ApplicationDbContext db;
 
-        public CitizenRepository(
+        public BloodRepository(
             ApplicationDbContext db
             )
         {
             this.db = db;
         }
 
-        public (bool, string) Create(Citizen model)
+        public (bool, string) Create(Blood model)
         {
             try
             {
-                db.Citizens.Add(model);
+                db.Bloods.Add(model);
                 db.SaveChanges();
 
                 return (true, "Added Successfully");
@@ -47,11 +47,11 @@ namespace RaktaSewa.Repository
             }
         }
 
-        public (bool, string) Delete(Citizen model)
+        public (bool, string) Delete(Blood model)
         {
             try
             {
-                db.Citizens.Remove(model);
+                db.Bloods.Remove(model);
                 db.SaveChanges();
 
                 return (true, "Deleted Successfully");
@@ -62,11 +62,11 @@ namespace RaktaSewa.Repository
             }
         }
 
-        public (bool, string) Edit(Citizen model)
+        public (bool, string) Edit(Blood model)
         {
             try
             {
-                db.Citizens.Update(model);
+                db.Bloods.Update(model);
                 db.SaveChanges();
 
                 return (true, "Updated Successfully");
@@ -77,14 +77,14 @@ namespace RaktaSewa.Repository
             }
         }
 
-        public IQueryable<Citizen> GetAll()
+        public IQueryable<Blood> GetAll()
         {
-            return db.Citizens.Where(p => !p.IsDeleted);
+            return db.Bloods.Where(p => !p.IsDeleted);
         }
 
-        public Citizen GetById(int id)
+        public Blood GetById(int id)
         {
-            var existing = db.Citizens.Find(id);
+            var existing = db.Bloods.Find(id);
             if (existing == null || existing.IsDeleted) return null;
 
             return existing;

@@ -66,12 +66,16 @@ namespace RaktaSewa
                 #region Repositories
 
                 services.AddTransient<ICitizenRepository, CitizenRepository>();
+                services.AddTransient<IBloodRepository, BloodRepository>();
+
 
                 #endregion Repositories
 
                 #region Services
 
                 services.AddTransient<ICitizenService, CitizenService>();
+                services.AddTransient<IBloodService, BloodService>();
+
 
                 #endregion Services
             }

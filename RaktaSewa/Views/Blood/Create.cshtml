@@ -1,0 +1,43 @@
+﻿@model RaktaSewa.Models.Blood
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Blood</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+     
+            <div class="form-group">
+                <label asp-for="blood_group" class="control-label">Blood Group</label>
+                <select asp-for="blood_group" class="form-control" >
+                <option value="">Please select Your Blood Group</option>
+                <option value="A+">A+ve</option>
+                <option value="A-">A-ve</option>
+                <option value="B+">B+ve</option>
+                <option value="B-">B-ve</option>
+                <option value="AB+">AB+ve</option>
+                <option value="AB-">AB-ve</option>
+                <option value="O+">O+ve</option>
+                <option value="O-">O-ve</option>
+               </select>
+                <span asp-validation-for="blood_group" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

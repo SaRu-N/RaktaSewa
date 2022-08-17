@@ -46,7 +46,7 @@ namespace RaktaSewa.Models.ViewModels
         public string blood_group { get; set; }
         [StringLength(1)]
         public string Gender { get; set; }
-        public DateOnly DOB { get; set; }
+        public DateOnly? DOB { get; set; }
         public string photo { get; set; }
         [Required]
         [StringLength(20)]
