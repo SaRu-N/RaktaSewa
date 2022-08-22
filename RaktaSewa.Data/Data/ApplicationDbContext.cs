@@ -19,6 +19,8 @@ namespace RaktaSewa.Data.Data
 
         public DbSet<Seeker> Seekers { get; set; }
         public DbSet<Organization> Organizations {get;set;}
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Event> Events { get; set; }
 
 
     }
