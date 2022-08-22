@@ -12,6 +12,7 @@ namespace RaktaSewa
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+          
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -32,6 +33,7 @@ namespace RaktaSewa
             });
 
             DependeciesConfig(builder.Services);
+           
 
             var app = builder.Build();
 
@@ -67,6 +69,7 @@ namespace RaktaSewa
 
                 services.AddTransient<ICitizenRepository, CitizenRepository>();
                 services.AddTransient<IBloodRepository, BloodRepository>();
+                services.AddTransient <IHospitalRepository, HospitalRepository>();
 
 
                 #endregion Repositories
@@ -75,6 +78,7 @@ namespace RaktaSewa
 
                 services.AddTransient<ICitizenService, CitizenService>();
                 services.AddTransient<IBloodService, BloodService>();
+                services.AddTransient<IHospitalService, HospitalService>();
 
 
                 #endregion Services

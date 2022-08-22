@@ -9,59 +9,59 @@ using System.Diagnostics;
 
 namespace RaktaSewa.Controllers
 {
-    public class BloodController : Controller
+    public class HospitalController : Controller
     {
-        private readonly IBloodService bloodService;
-        private readonly ILogger<BloodController> _logger;
-        public BloodController(
-        ILogger<BloodController> logger,
-        IBloodService bloodService
+        private readonly IHospitalService hospitalService;
+        private readonly ILogger<HospitalController> _logger;
+        public HospitalController(
+        ILogger<HospitalController> logger,
+        IHospitalService HospitalService
         )
         {
             _logger = logger;
-            this.bloodService = bloodService;
+            this.hospitalService = HospitalService;
         }
 
-        // GET: BloodController
+        // GET: HospitalController
         public IActionResult Index()
         {
-            return View(new List<Blood>());
+            return View(new List<Hospital>());
            
         }
 
-        // GET: BloodController/Details/5
-        public IActionResult Details(int Id)
+        // GET: HospitalController/Details/5
+        public IActionResult Details(int Hospital_id)
         {
             return View();
         }
 
-        // GET: BloodController/Create
+        // GET: HospitalController/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: BloodController/Create
+        // POST: HospitalController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(BloodCreateViewModel model)
+        public IActionResult Create(HospitalCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var res = bloodService.Create(model);
+                var res = hospitalService.Create(model);
                 if (res.Item1)
                     return RedirectToAction("Index");
             }
             return View();
         }
 
-        // GET: BloodController/Edit/5
+        // GET: HospitalController/Edit/5
         public IActionResult Edit(int Id)
         {
             return View();
         }
 
-        // POST: BloodController/Edit/5
+        // POST: HospitalController/Edit/5
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public IActionResult Edit(int id, IFormCollection collection)
@@ -76,18 +76,18 @@ namespace RaktaSewa.Controllers
         //    }
         //}
 
-        // GET: BloodController/Delete/5
-        //public IActionResult Delete(int Id)
+        // GET: HospitalController/Delete/5
+        //public IActionResult Delete(int Hospital_id)
         //{
         //    return View();
         //}
 
-        // POST: BloodController/Delete/5
+        // POST: HospitalController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int Id)
         {
-            var res = bloodService.Delete(Id);
+            var res = hospitalService.Delete(Id);
             if (res.Item1) return RedirectToAction("Index");
 
             return View("Error");

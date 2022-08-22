@@ -44,7 +44,7 @@ namespace RaktaSewa.Controllers
         // POST: CitizenController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateCitizen(CitizenCreateViewModel model)
+        public IActionResult Create(CitizenCreateViewModel model)
         {
             if (ModelState.IsValid)
             {

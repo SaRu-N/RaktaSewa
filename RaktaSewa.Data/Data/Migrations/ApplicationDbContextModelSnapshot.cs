@@ -232,6 +232,10 @@ namespace RaktaSewa.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -243,6 +247,8 @@ namespace RaktaSewa.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Bloods");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Blood");
                 });
 
             modelBuilder.Entity("RaktaSewa.Models.Citizen", b =>
@@ -268,6 +274,10 @@ namespace RaktaSewa.Data.Migrations
 
                     b.Property<DateTime?>("DOB")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
                         .IsRequired()
@@ -302,6 +312,105 @@ namespace RaktaSewa.Data.Migrations
                     b.HasKey("citizen_id");
 
                     b.ToTable("Citizens");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Citizen");
+                });
+
+            modelBuilder.Entity("RaktaSewa.Models.Hospital", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Reg_No")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("Updated_at")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Hospitals");
+                });
+
+            modelBuilder.Entity("RaktaSewa.Models.Organization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organizations");
+                });
+
+            modelBuilder.Entity("RaktaSewa.Models.BloodStock", b =>
+                {
+                    b.HasBaseType("RaktaSewa.Models.Blood");
+
+                    b.Property<string>("Amount")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Available")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Stock_Id")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("BloodStock");
+                });
+
+            modelBuilder.Entity("RaktaSewa.Models.Donor", b =>
+                {
+                    b.HasBaseType("RaktaSewa.Models.Citizen");
+
+                    b.Property<string>("DonorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Donor");
+                });
+
+            modelBuilder.Entity("RaktaSewa.Models.Seeker", b =>
+                {
+                    b.HasBaseType("RaktaSewa.Models.Citizen");
+
+                    b.Property<string>("Patient_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Seeker");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

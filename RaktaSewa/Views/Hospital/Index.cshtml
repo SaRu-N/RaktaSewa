@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<RaktaSewa.Models.Citizen>
+@model IEnumerable<RaktaSewa.Models.Hospital>
 @{
     ViewData["Title"] = "Index";
 }
@@ -29,10 +29,10 @@
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                @Html.DisplayNameFor(model => model.Contact)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.blood_group)
+                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
                 Actions
@@ -49,15 +49,15 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Phone)
+                @Html.DisplayFor(modelItem => item.Contact)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.blood_group)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.citizen_id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.citizen_id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.citizen_id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

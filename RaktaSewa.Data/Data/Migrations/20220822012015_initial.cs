@@ -4,29 +4,37 @@
 
 namespace RaktaSewa.Data.Migrations
 {
-    public partial class blood_model : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "Patient_Name",
+                table: "Citizens",
+                type: "nvarchar(max)",
+                nullable: true);
+
             migrationBuilder.CreateTable(
-                name: "Bloods",
+                name: "Organizations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    blood_group = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bloods", x => x.Id);
+                    table.PrimaryKey("PK_Organizations", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Bloods");
+                name: "Organizations");
+
+            migrationBuilder.DropColumn(
+                name: "Patient_Name",
+                table: "Citizens");
         }
     }
 }
