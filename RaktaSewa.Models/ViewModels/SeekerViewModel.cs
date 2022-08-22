@@ -16,7 +16,7 @@ namespace RaktaSewa.Models.ViewModels
         public string Patient_BloodGroup { get; set; }
         public DateTime Created_At { get; set; }
     }
-    public class SeekerCreateViewModel { 
+    public class SeekerCreateViewModel:CitizenCreateViewModel { 
         public int PatientId { get; set; }
         public string Patient_Name { get; set; }
         public string Patient_Address { get; set; }

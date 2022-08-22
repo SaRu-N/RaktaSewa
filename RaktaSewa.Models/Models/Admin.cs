@@ -14,10 +14,11 @@ namespace RaktaSewa.Models
         public string Address { get;set;}
         public string Email { get;set;}
         public string Phone_Number { get;set;}
+        public string blood_group { get; set; }
         public DateTime Created_At { get;set;}
         public DateTime? Updated_At { get; set; }
 
-        public bool Is_Deleted { get;set;} = false;
+        public bool IsDeleted { get;set;} = false;
      
     }
 }

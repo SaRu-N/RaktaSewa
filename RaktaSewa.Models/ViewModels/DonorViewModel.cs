@@ -23,7 +23,7 @@ namespace RaktaSewa.Models.ViewModels
         [ForeignKey("HospitalId")]
         public virtual Hospital Hospitals { get; set; }
     }
-    public class DonorCreateViewModel 
+    public class DonorCreateViewModel :CitizenCreateViewModel
     {
         public string Amount { get; set; }
         public bool isEligible { get; set; }

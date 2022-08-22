@@ -12,7 +12,8 @@ namespace RaktaSewa.Models.ViewModels
         public int Stock_Id { get; set; }
         public bool Available { get; set; }
         public string Amount { get; set; }
-      
+        public DateTime Created_At { get; set; }
+
     }
     public class BloodStockCreateViewModel:BloodCreateViewModel
     {
